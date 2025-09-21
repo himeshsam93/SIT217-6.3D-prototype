@@ -14,7 +14,7 @@ Human-in-the-loop review for analysts to verify and refine extracted requirement
 
 Technologies Used
 
-Python 3.x
-Natural Language Processing: spaCy, NLTK
-Data handling: pandas
-Document processing: python-docx, PyPDF2
+Python 3.x<br>
+Natural Language Processing: spaCy, NLTK<br>
+Data handling: pandas <br>
+Document processing: python-docx, PyPDF2<br>
