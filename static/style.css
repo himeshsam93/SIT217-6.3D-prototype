@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; margin: 20px; background:#fafafa; color:#222; }
+.container { max-width:1000px; margin: 0 auto; padding:20px; background:#fff; box-shadow:0 0 8px rgba(0,0,0,0.06); }
+h1 { margin-bottom: 8px; }
+.upload, .results { margin-top: 16px; }
+table { width:100%; border-collapse:collapse; margin-top:12px; }
+table, th, td { border: 1px solid #ddd; }
+th, td { padding:8px; text-align:left; vertical-align:top; }
+textarea { width:100%; }
+.buttons { margin-top: 10px; }
+button { padding:8px 12px; margin-right:8px; cursor:pointer; }
+footer { margin-top: 20px; font-size: 0.9em; color: #666; }

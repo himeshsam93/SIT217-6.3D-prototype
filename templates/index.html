@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NLRES Prototype</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Automated Requirement Extraction (Prototype)</h1>
+
+    <section class="upload">
+      <form action="{{ url_for('extract') }}" method="post" enctype="multipart/form-data">
+        <label for="file">Upload a .txt file with stakeholder text:</label>
+        <input type="file" name="file" id="file" accept=".txt" required>
+        <br><br><br>
+        <button type="submit">Extract Requirements</button>
+      </form>
+    </section>
+
+    {% if requirements %}
+    <section class="results">
+      <h2>Extracted Requirements</h2>
+      <form action="{{ url_for('save') }}" method="post">
+        <input type="hidden" name="row-count" value="{{ requirements|length }}">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Requirement</th><th>Category</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            {% for i, r in enumerate(requirements) %}
+            <tr>
+              <td><input type="text" name="id-{{ i }}" value="{{ r.id }}" readonly></td>
+              <td><textarea name="text-{{ i }}" rows="2">{{ r.text }}</textarea></td>
+              <td>
+                <select name="category-{{ i }}">
+                  <option value="Functional" {% if r.category=='Functional' %}selected{% endif %}>Functional</option>
+                  <option value="Non-Functional" {% if r.category=='Non-Functional' %}selected{% endif %}>Non-Functional</option>
+                </select>
+              </td>
+              <td><input type="text" name="source-{{ i }}" value="{{ r.source }}" readonly></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="buttons">
+          <button type="submit">Save Changes</button>
+        </div>
+      </form>
+
+      <div class="export">
+        <form action="{{ url_for('export') }}" method="get">
+          <button type="submit">Export CSV</button>
+        </form>
+        <form action="{{ url_for('clear') }}" method="post" style="display:inline;">
+          <button type="submit">Clear Results</button>
+        </form>
+      </div>
+    </section>
+    {% endif %}
+    <footer>
+      <p>Prototype for SIT217 6.3D task. This demo uses simple keyword detection for extraction.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+The system must store user data securely and encrypt personal information.
+The system shall allow export of reports to CSV and PDF formats.
+The application should be user-friendly and accessible to people with disabilities.
+The system must process transactions within 2 seconds under normal load.
+The system should log user activity for audit purposes.
